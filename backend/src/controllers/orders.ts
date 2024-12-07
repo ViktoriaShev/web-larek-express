@@ -6,8 +6,10 @@ import Product from "../models/product";
 import BadRequestError from "../errors/bad-request-error";
 
 const createOrder = async (req: Request, res: Response, next: NextFunction) => {
-  const { payment, phone, total, items }: IOrder = req.body;
-  // Проверка на наличие товаров в базе данных
+  const {
+    payment, phone, total, items,
+  }: IOrder = req.body;
+  // Пsроверка на наличие товаров в базе данных
   if (!Array.isArray(items) || items.length === 0) {
     return next(new BadRequestError("Items must be a non-empty array."));
   }

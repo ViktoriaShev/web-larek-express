@@ -8,10 +8,6 @@
   },
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-prettier": "^5.2.1"
-  },
   "dependencies": {
     "-": "^0.0.1",
     "@faker-js/faker": "^9.2.0"

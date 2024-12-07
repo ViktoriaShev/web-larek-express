@@ -6,23 +6,24 @@ import BadRequestError from "../errors/bad-request-error";
 import NotFoundError from "../errors/not-found-error";
 import ConflictError from "../errors/conflict-error";
 
-export const getProducts = (_req: Request, res: Response, next: NextFunction) =>
-  Product.find({})
-    // eslint-disable-next-line consistent-return
-    .then((products) => {
-      if (!products.length) {
-        return next(new NotFoundError("No products found."));
-      }
-      res.send({ items: products, total: products.length });
-    })
-    .catch(() => next(new BadRequestError("Failed to retrieve products.")));
+export const getProducts = (_req: Request, res: Response, next: NextFunction) => Product.find({})
+  // eslint-disable-next-line consistent-return
+  .then((products) => {
+    if (!products.length) {
+      return next(new NotFoundError("No products found."));
+    }
+    res.send({ items: products, total: products.length });
+  })
+  .catch(() => next(new BadRequestError("Failed to retrieve products.")));
 
 export const createProduct = (
   req: Request,
   res: Response,
   next: NextFunction,
 ) => {
-  const { price, image, description, title, category }: IProduct = req.body;
+  const {
+    price, image, description, title, category,
+  }: IProduct = req.body;
   const finalPrice = price !== undefined ? price : null;
 
   if (!title || !category || !image) {
