@@ -53,7 +53,7 @@ const createOrder = async (req: Request, res: Response, next: NextFunction) => {
       );
     }
 
-    return res.status(200).send({ id: faker.string.uuid(), total: summ });
+    return res.status(201).send({ id: faker.string.uuid(), total: summ });
   } catch (error) {
     return next(error);
   }

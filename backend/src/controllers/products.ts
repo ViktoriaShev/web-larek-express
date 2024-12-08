@@ -12,9 +12,9 @@ export const getProducts = (_req: Request, res: Response, next: NextFunction) =>
     if (!products.length) {
       return next(new NotFoundError("No products found."));
     }
-    res.send({ items: products, total: products.length });
+    res.status(200).send({ items: products, total: products.length });
   })
-  .catch(() => next(new BadRequestError("Failed to retrieve products.")));
+  .catch((error) => next(error));
 
 export const createProduct = (
   req: Request,

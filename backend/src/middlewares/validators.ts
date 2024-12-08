@@ -15,7 +15,7 @@ export const orderSchema = Joi.object({
 });
 
 export const productSchema = Joi.object({
-  title: Joi.string().required(),
+  title: Joi.string().required().min(2),
   image: Joi.object({
     fileName: Joi.string().required(),
     originalName: Joi.string().optional(),
