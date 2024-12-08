@@ -15,6 +15,7 @@ export enum PaymentMethod {
   Card = "card",
   Online = "online",
 }
+
 export interface IOrder {
   payment: PaymentMethod;
   email: string;

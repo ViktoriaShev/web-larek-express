@@ -19,6 +19,7 @@ const productSchema = new mongoose.Schema<IProduct>({
     minlength: [2, "Минимальная длина поля 'title' - 2"],
     maxlength: [30, "Максимальная длина поля 'title' - 30"],
     required: true,
+    unique: true,
   },
   image: imageSchema,
   category: {
