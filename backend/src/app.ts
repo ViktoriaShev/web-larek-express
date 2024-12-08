@@ -27,8 +27,8 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use(requestLogger);
 app.use("/", router);
-app.use(errors());
 app.use(errorLogger);
+app.use(errors());
 app.use(errorMiddleware);
 
 app.listen(config.PORT, () => {

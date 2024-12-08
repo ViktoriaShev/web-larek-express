@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import { Request, Response, NextFunction } from "express";
 
 import { IProduct } from "../types";
@@ -6,15 +7,16 @@ import BadRequestError from "../errors/bad-request-error";
 import NotFoundError from "../errors/not-found-error";
 import ConflictError from "../errors/conflict-error";
 
-export const getProducts = (_req: Request, res: Response, next: NextFunction) => Product.find({})
-  // eslint-disable-next-line consistent-return
-  .then((products) => {
-    if (!products.length) {
-      return next(new NotFoundError("No products found."));
-    }
-    res.status(200).send({ items: products, total: products.length });
-  })
-  .catch((error) => next(error));
+export const getProducts = (_req: Request, res: Response, next: NextFunction) => {
+  Product.find({})
+    .then((products) => {
+      if (!products.length) {
+        return next(new NotFoundError("No products found."));
+      }
+      res.status(200).send({ items: products, total: products.length });
+    })
+    .catch((error) => next(error));
+};
 
 export const createProduct = (
   req: Request,
